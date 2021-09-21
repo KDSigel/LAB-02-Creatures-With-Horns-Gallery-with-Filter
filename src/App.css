@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,23 @@
   to {
     transform: rotate(360deg);
   }
+} */
+.animalImage {
+  width: 150px;
+}
+
+.individualAnimal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+  border: 5px solid deeppink;
+  margin: 30px;
+}
+
+.allAnimals {
+  display: flex;
+  flex-wrap: wrap;
+
 }
