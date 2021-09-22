@@ -1,6 +1,7 @@
 import './App.css';
 import images from './data.js';
 import React, { Component } from 'react'
+import Header from './Header.js';
 
 class App extends Component {
 
@@ -18,8 +19,9 @@ class App extends Component {
         )
   return (
     <>
-    <div className="header">
-      <div>pick something horny
+    <Header />
+    <div className="subhead">
+      <div>Select your favorite type: 
         <select onChange={this.animalChange}>
           <option value=""></option>
           <option value="narwhal">narwhal</option>
@@ -48,10 +50,9 @@ class ImageItem extends Component {
   render() {
       return (
           <div className="individualAnimal">
-              <div>{this.props.title}</div>
-              <p>{this.props.description}</p>
+              <h5>The {this.props.horns} horned {this.props.title}</h5>
               <img className="animalImage" src={this.props.url} alt={this.props.title}/>
-              <div>{this.props.horns} horns</div>
+              <p className="description">{this.props.description}</p>
           </div>
       )
   }
