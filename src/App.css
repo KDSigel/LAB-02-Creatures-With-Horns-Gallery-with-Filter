@@ -50,7 +50,6 @@
   background-color: deeppink;
   border-radius: 11px;
   margin: 30px;
-  padding: 10px;
 }
 
 .allAnimals {
@@ -74,6 +73,7 @@
 
 .description {
   font-size: .8rem;
+  font-style: italic;
   width: 80%;
   color: aliceblue;
 }
@@ -82,4 +82,6 @@ h5 {
   margin: 1rem;
   padding: 0;
   color: aliceblue;
+  text-transform: uppercase;
+  text-align: center;
 }

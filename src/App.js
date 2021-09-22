@@ -5,10 +5,16 @@ import Header from './Header.js';
 
 class App extends Component {
 
-  state = { keyword: "" }
-  animalChange = (e) => {
+  state = { keyword: "",
+            horns: 0
+          }
+
+
+  keywordChange = (e) => {
   this.setState({ keyword: e.target.value })
   }
+
+
   render() {
     const filterImages = images.filter(animal => {
       if (!this.state.keyword) {
@@ -17,12 +23,14 @@ class App extends Component {
       return animal.keyword === this.state.keyword
       }
         )
+
+
   return (
     <>
     <Header />
     <div className="subhead">
       <div>Select your favorite type: 
-        <select onChange={this.animalChange}>
+        <select onChange={this.keywordChange}>
           <option value=""></option>
           <option value="narwhal">narwhal</option>
           <option value="rhino">rhino</option>
@@ -36,6 +44,14 @@ class App extends Component {
           <option value="lizard">lizard</option>
           <option value="dragon">dragon</option>
         </select>
+
+        <select>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="100">100</option>
+        </select>
+
       </div>
     </div>
       <ImageList 
