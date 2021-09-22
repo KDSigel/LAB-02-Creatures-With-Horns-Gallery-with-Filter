@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,51 @@
   to {
     transform: rotate(360deg);
   }
+} */
+.animalImage {
+  height: 50%;
+}
+
+.individualAnimal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+  border: 5px solid rgba(20, 220, 255, 0.502);
+  background-color: deeppink;
+  border-radius: 11px;
+  margin: 30px;
+  padding: 10px;
+}
+
+.allAnimals {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.header {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.subhead {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.description {
+  font-size: .8rem;
+  width: 80%;
+  color: aliceblue;
+}
+
+h5 {
+  margin: 1rem;
+  padding: 0;
+  color: aliceblue;
 }
