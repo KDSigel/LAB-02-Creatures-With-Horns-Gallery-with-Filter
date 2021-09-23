@@ -2,41 +2,69 @@ import './App.css';
 import images from './data.js';
 import React, { Component } from 'react'
 import Header from './Header.js';
+import Dropdown from './Dropdown';
 
 class App extends Component {
 
-  state = { keyword: "" }
-  animalChange = (e) => {
+  state = { keyword: '',
+            horns: ''
+          }
+
+
+  keywordChange = (e) => {
   this.setState({ keyword: e.target.value })
   }
+
+  hornChange = (e) => {
+    this.setState({ horns: Number(e.target.value) })
+    }
+
   render() {
+
+    let keywordsArray = []
+    for (let image of images) {
+      if (!keywordsArray.includes(image.keyword))
+      keywordsArray.push(image.keyword)
+    }
+    let hornsArray = []
+    for (let image of images) {
+      if (!hornsArray.includes(image.horns))
+      hornsArray.push(image.horns)
+    }
+
     const filterImages = images.filter(animal => {
-      if (!this.state.keyword) {
+      if (!this.state.keyword){
       return true
       }
       return animal.keyword === this.state.keyword
       }
+        ).filter(animal => {
+          if (!this.state.horns){
+          return true
+          }
+          return animal.horns === this.state.horns
+          }
         )
+
   return (
     <>
     <Header />
     <div className="subhead">
-      <div>Select your favorite type: 
-        <select onChange={this.animalChange}>
-          <option value=""></option>
-          <option value="narwhal">narwhal</option>
-          <option value="rhino">rhino</option>
-          <option value="unicorn">unicorn</option>
-          <option value="unilego">unilego</option>
-          <option value="triceratops">triceratops</option>
-          <option value="markhor">markhor</option>
-          <option value="mouflon">mouflon</option>
-          <option value="addax">addax</option>
-          <option value="chameleon">chameleon</option>
-          <option value="lizard">lizard</option>
-          <option value="dragon">dragon</option>
-        </select>
-      </div>
+      <div>
+        Select your favorite type: 
+        <Dropdown 
+        options = {keywordsArray}
+        handleChange = {this.keywordChange}
+        />
+        </div>
+        <div>
+          and/or number of horns
+          <Dropdown 
+        options = {hornsArray}
+        handleChange = {this.hornChange}
+        />
+        </div>
+
     </div>
       <ImageList 
       filteredImages = {filterImages}
@@ -49,11 +77,11 @@ class App extends Component {
 class ImageItem extends Component {
   render() {
       return (
-          <div className="individualAnimal">
+          <li className="individualAnimal">
               <h5>The {this.props.horns} horned {this.props.title}</h5>
               <img className="animalImage" src={this.props.url} alt={this.props.title}/>
               <p className="description">{this.props.description}</p>
-          </div>
+          </li>
       )
   }
 }
@@ -61,10 +89,11 @@ class ImageItem extends Component {
 class ImageList extends Component {
   render() {
       return (
-          <div className="allAnimals">
+          <ul className="allAnimals">
       {this.props.filteredImages.map((image) => {
           return (
               <ImageItem 
+                  key={image.description}
                   title={image.title} 
                   description={image.description} 
                   url={image.url}
@@ -72,7 +101,7 @@ class ImageList extends Component {
                   />
               )}
               )}
-          </div>
+          </ul>
       )}}
 
 export default App;
