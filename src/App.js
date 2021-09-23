@@ -77,7 +77,7 @@ class App extends Component {
 class ImageItem extends Component {
   render() {
       return (
-          <li className="individualAnimal" key={this.props.keyword}>
+          <li className="individualAnimal">
               <h5>The {this.props.horns} horned {this.props.title}</h5>
               <img className="animalImage" src={this.props.url} alt={this.props.title}/>
               <p className="description">{this.props.description}</p>
@@ -93,6 +93,7 @@ class ImageList extends Component {
       {this.props.filteredImages.map((image) => {
           return (
               <ImageItem 
+                  key={image.description}
                   title={image.title} 
                   description={image.description} 
                   url={image.url}

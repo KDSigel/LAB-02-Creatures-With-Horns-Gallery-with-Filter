@@ -8,7 +8,7 @@ export default class Dropdown extends Component {
                     <option value=''>all</option>
                     {this.props.options.map((image) => {
           return (
-              <option value={image}>{image}</option>
+              <option value={image} key={image}>{image}</option>
               )}
               )}
                 </select>
